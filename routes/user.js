@@ -1,6 +1,5 @@
 const express = require('express');
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
 const Users = require('../model/Users')
 const router = express.Router();
 
@@ -47,9 +46,7 @@ router.put('/put', (req, res) => {
 
 router.post('/register', (req, res) => {
     const { body } = req;
-    const hash = hashPassword(body.password)
-    console.log("hash==>", hash)
-    const newUser = new Users({ email: body.email, password: hash })
+    const newUser = new Users({ email: body.email, name: body.name })
     newUser.save()
         .then(() => res.send({ message: "User Register Successfully!" }))
         .catch(e => res.send(500, { message: e.message }))
@@ -63,23 +60,10 @@ router.post('/login', async (req, res) => {
         return
     }
 
-    const passwordMatched = bcrypt.compareSync(req.body.password, user[0].password)
-
-    if (!passwordMatched) {
-        res.send(500, { message: "Incorrcet Email/Password" })
-        return
-    }
-
     const token = jwt.sign({ user }, 'secretKey')
     console.log(token)
     res.send({ token })
 })
-
-function hashPassword(password) {
-    var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(password, salt);
-    return hash
-}
 
 
 
