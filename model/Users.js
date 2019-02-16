@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
-    loginId: String,
+    loginId: Number,
 })
 
 const Users = mongoose.model('Users',userSchema)
