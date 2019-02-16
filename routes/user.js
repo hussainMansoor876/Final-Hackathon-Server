@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.get('/get/:id', (req, res) => {
     console.log('Get', req.params.id)
-    Users.findById({ _id: '5c40a9663313fb1ae0592755' })
+    console.log('body',req.body)
+    Users.find({ loginId: req.params.id })
         .then((response) => {
             return res.send(response)
         })
@@ -47,7 +48,8 @@ router.put('/put', (req, res) => {
 router.post('/register', (req, res) => {
     const { body } = req;
     // Users.find({})
-    const newUser = new Users({ email: body.email, name: body.name,avator: body.photoUrl, loginId: body.id })
+    console.log('body',body)
+    const newUser = new Users({ email: body.email, name: body.name,avator: body.photoUrl, loginId: body.loginId })
     newUser.save()
         .then(() => res.send({ message: "User Register Successfully!" }))
         .catch(e => res.send(500, { message: e.message }))
