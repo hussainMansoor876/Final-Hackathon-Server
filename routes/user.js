@@ -46,7 +46,8 @@ router.put('/put', (req, res) => {
 
 router.post('/register', (req, res) => {
     const { body } = req;
-    const newUser = new Users({ email: body.email, name: body.name })
+    // Users.find({})
+    const newUser = new Users({ email: body.email, name: body.name,avator: body.photoUrl, loginId: body.id })
     newUser.save()
         .then(() => res.send({ message: "User Register Successfully!" }))
         .catch(e => res.send(500, { message: e.message }))
