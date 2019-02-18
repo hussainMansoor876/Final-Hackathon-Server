@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
-    age: {
+    phone: {
         type: Number,
         default: null
     },
