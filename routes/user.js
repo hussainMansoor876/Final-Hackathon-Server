@@ -81,7 +81,7 @@ router.post('/post', (request, response) => {
     const user = new Users(request.body);
     
     user.save()
-    .then((res) => response.send({ message: 'User successfully Add' }))
+    .then((res) => response.send({ message: 'Sign Up Successfully' }))
     .catch(e => response.send(500, { message: e.message }))
     // console.log(request.body)
     // console.log('Post***')
