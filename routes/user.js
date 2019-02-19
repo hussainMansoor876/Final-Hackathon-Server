@@ -68,25 +68,20 @@ router.post('/login', async (req, res) => {
     res.send({ token })
 })
 
-
-
-router.get('/find/:id', (req, res) => {
-    Users.findById(req.param.id)
-    .then((response) => {
-        return res.send(response)
-    })
-})
-
 router.post('/post', (request, response) => {
     const user = new Users(request.body);
     
     user.save()
     .then((res) => response.send({ message: 'Sign Up Successfully' }))
     .catch(e => response.send(500, { message: e.message }))
-    // console.log(request.body)
-    // console.log('Post***')
-    // response.send({name: 'Mansoor',email:'hussain@gmail.com'})
 })
+
+router.post('/updateService/:id', (request, response) => {
+    // Users.find({loginId: request.params.id},{services: })
+    // .then((res) => response.send({ message: 'Sign Up Successfully' }))
+    // .catch(e => response.send(500, { message: e.message }))
+})
+
 
 // router.post('/del',(req,res)=>{
 //     const { body } = req;
