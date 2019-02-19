@@ -16,7 +16,11 @@ const userSchema = new mongoose.Schema({
     },
     loginId: Number,
     lat: Number,
-    lng: Number
+    lng: Number,
+    services: {
+        type: Array,
+        default: null
+    }
 })
 
 const Users = mongoose.model('Users',userSchema)
