@@ -15,8 +15,8 @@ const userSchema = new mongoose.Schema({
         default: null
     },
     loginId: Number,
-    lat: String,
-    lng: String
+    lat: Number,
+    lng: Number
 })
 
 const Users = mongoose.model('Users',userSchema)
