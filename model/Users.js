@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
-    loginId: Number,
+    id: Number,
     lat: Number,
     lng: Number,
     services: {

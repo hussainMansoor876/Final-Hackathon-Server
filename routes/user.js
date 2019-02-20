@@ -77,7 +77,9 @@ router.post('/post', (request, response) => {
 })
 
 router.post('/updateService/:id', (request, response) => {
-    // Users.find({loginId: request.params.id},{services: })
+    console.log(response.body)
+    response.send({Message: 'Hello'})
+    // Users.find({loginId: request.params.id},{services: response.body})
     // .then((res) => response.send({ message: 'Sign Up Successfully' }))
     // .catch(e => response.send(500, { message: e.message }))
 })
