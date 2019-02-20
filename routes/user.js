@@ -13,8 +13,8 @@ router.get('/get/:id', (req, res) => {
         .catch(e => console.log(e))
 })
 
-router.get('/getAll', (req, res) => {
-    Users.find({})
+router.get('/getAll/:id', (req, res) => {
+    Users.find({id: {$ne: req.params.id}})
         .then((response) => {
             return res.send(response)
         })
