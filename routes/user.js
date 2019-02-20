@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/get/:id', (req, res) => {
     console.log('Get', req.params.id)
     console.log('body',req.body)
-    Users.find({ loginId: req.params.id })
+    Users.find({ id: req.params.id })
         .then((response) => {
             return res.send(response)
         })
