@@ -39,7 +39,7 @@ router.put('/updateService/:id', (req, res) => {
     Users.findOneAndUpdate(id, { services: body.services })
         .then((response) => {
             console.log('im running')
-            res.send({ message: 'User Update Successfully', response })
+            res.send({ message: 'User Update Successfully', response,body: body })
         })
         .catch(e => res.send({ message: e.message }))
 })
