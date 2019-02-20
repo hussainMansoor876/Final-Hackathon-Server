@@ -36,15 +36,12 @@ router.delete('/del', (req, res) => {
 router.put('/updateService/:id', (req, res) => {
     const { body } = req;
     const { id } = req.params
-    console.log(body)
-    res.send({message: "hello"})
-
-    // Users.updateOne(id, { services: body.services })
-    //     .then((response) => {
-    //         console.log('im running')
-    //         res.send({ message: 'User Update Successfully', response })
-    //     })
-    //     .catch(e => res.send({ message: e.message }))
+    Users.updateOne(id, { services: body.services })
+        .then((response) => {
+            console.log('im running')
+            res.send({ message: 'User Update Successfully', response })
+        })
+        .catch(e => res.send({ message: e.message }))
 })
 
 router.post('/register', (req, res) => {
