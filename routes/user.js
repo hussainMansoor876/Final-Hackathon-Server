@@ -33,16 +33,18 @@ router.delete('/del', (req, res) => {
         .catch(e => res.send({ message: e.message }))
 })
 
-router.put('/put', (req, res) => {
+router.put('/updateService/:id', (req, res) => {
     const { body } = req;
+    const { id } = req.params
     console.log(body)
+    res.send({message: "hello"})
 
-    Users.updateOne({ name: "Hussain" }, { name: body.name })
-        .then((response) => {
-            console.log('im running')
-            res.send({ message: 'User Update Successfully', response })
-        })
-        .catch(e => res.send({ message: e.message }))
+    // Users.updateOne(id, { services: body.services })
+    //     .then((response) => {
+    //         console.log('im running')
+    //         res.send({ message: 'User Update Successfully', response })
+    //     })
+    //     .catch(e => res.send({ message: e.message }))
 })
 
 router.post('/register', (req, res) => {
@@ -56,18 +58,6 @@ router.post('/register', (req, res) => {
 
 })
 
-router.post('/login', async (req, res) => {
-    const user = await Users.find({ email: req.body.email })
-    if (!user.length) {
-        res.send(500, { message: "User not found" })
-        return
-    }
-
-    const token = jwt.sign({ user }, 'secretKey')
-    console.log(token)
-    res.send({ token })
-})
-
 router.post('/post', (request, response) => {
     const user = new Users(request.body);
     
@@ -76,33 +66,6 @@ router.post('/post', (request, response) => {
     .catch(e => response.send(500, { message: e.message }))
 })
 
-router.post('/updateService/:id', (request, response) => {
-    console.log(response.body)
-    response.send({Message: 'Hello'})
-    // Users.find({loginId: request.params.id},{services: response.body})
-    // .then((res) => response.send({ message: 'Sign Up Successfully' }))
-    // .catch(e => response.send(500, { message: e.message }))
-})
 
-
-// router.post('/del',(req,res)=>{
-//     const { body } = req;
-//     console.log(body)
-
-//     Users.update({ email: body.email}, {name: body.name})
-//     .then((response)=>{
-//         console.log('im running')
-//         res.send({ message: 'User deleted', response })
-//     })
-//     .catch(e => res.send({message: e.message}))
-// })
-
-// router.delete('/del/:id',(req,res)=>{
-//     const users = new Users(req.body)
-//     users.deleteOne({_id: req.param.id})
-//     .then((response)=>{
-//         return res.send("Succesfully delete")
-//     })
-// })
 
 module.exports = router
