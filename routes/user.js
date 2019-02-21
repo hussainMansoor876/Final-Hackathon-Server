@@ -55,7 +55,7 @@ router.post('/post', (request, response) => {
 router.post('/service', (request, response) => {
     console.log(request.body)
     const { body } = request
-    Users.find({services: {$elemMatch: {name: body.name, type: true}}})
+    Users.find({services: {$elemMatch: {name: "plumber", type: true}}})
     .then((res) => response.send(res))
     .catch(e => response.send(500, { message: e.message }))
 })
