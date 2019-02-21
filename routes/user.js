@@ -43,16 +43,6 @@ router.put('/updateService/:id', (req, res) => {
         .catch(e => res.send({ message: e.message }))
 })
 
-router.post('/register', (req, res) => {
-    const { body } = req;
-    // Users.find({})
-    console.log('body',body)
-    const newUser = new Users({ email: body.email, name: body.name,avator: body.photoUrl, loginId: body.loginId })
-    newUser.save()
-        .then(() => res.send({ message: "User Register Successfully!" }))
-        .catch(e => res.send(500, { message: e.message }))
-
-})
 
 router.post('/post', (request, response) => {
     const user = new Users(request.body);
@@ -61,6 +51,15 @@ router.post('/post', (request, response) => {
     .then((res) => response.send({ message: 'Sign Up Successfully' }))
     .catch(e => response.send(500, { message: e.message }))
 })
+
+router.post('/service', (request, response) => {
+    console.log(request.body)
+    const { body } = request
+    Users.find({services: {$elemMatch: {name: body.name, type: true}}})
+    .then((res) => response.send(res))
+    .catch(e => response.send(500, { message: e.message }))
+})
+
 
 
 
