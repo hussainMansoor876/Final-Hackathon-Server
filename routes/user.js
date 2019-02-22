@@ -61,8 +61,9 @@ router.post('/service', (request, response) => {
 })
 
 router.put('/chat', (request, response) => {
-    console.log(request.body)
-    response.send({message: "Done Hogya"})
+    const { id, chat } = request.body
+    Users.findOneAndUpdate(id,chat)
+    .then((res) => response.send({message: "Done Hogya"}))
 })
 
 
