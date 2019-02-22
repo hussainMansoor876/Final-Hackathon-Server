@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     chat: {
         type: Object,
-        default: null
+        default: {}
     }
 })
 
