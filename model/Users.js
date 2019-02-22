@@ -22,8 +22,7 @@ const userSchema = new mongoose.Schema({
         default: null
     },
     chat: {
-        type: Object,
-        default: {}
+        type: Object
     }
 })
 
