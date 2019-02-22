@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     services: {
         type: Array,
         default: null
+    },
+    chat: {
+        type: Object,
+        default: null
     }
 })
 
