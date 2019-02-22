@@ -60,6 +60,10 @@ router.post('/service', (request, response) => {
     .catch(e => response.send(500, { message: e.message }))
 })
 
+router.post('/chat/:id', (request, response) => {
+    
+})
+
 
 
 
