@@ -63,7 +63,7 @@ router.post('/service', (request, response) => {
 router.put('/chat', (request, response) => {
     const { id, chat } = request.body
     console.log(chat)
-    Users.findOneAndUpdate(id,{chat: chat})
+    Users.findByIdAndUpdate(id,{chat: chat})
     .then((res) => response.send({message: "Done Hogya"}))
 })
 
