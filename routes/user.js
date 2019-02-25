@@ -35,7 +35,7 @@ router.delete('/del', (req, res) => {
 
 router.put('/updateService', (req, res) => {
     const { body } = req;
-    Users.findByIdAndUpdate(id, { services: body.services })
+    Users.findByIdAndUpdate(body.id, { services: body.services })
         .then((response) => {
             res.send({ message: 'Service Update Successfully' })
         })
