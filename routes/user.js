@@ -33,10 +33,9 @@ router.delete('/del', (req, res) => {
         .catch(e => res.send({ message: e.message }))
 })
 
-router.put('/updateService/:id', (req, res) => {
+router.put('/updateService', (req, res) => {
     const { body } = req;
-    const { id } = req.params
-    Users.findOneAndUpdate(id, { services: body.services })
+    Users.findByIdAndUpdate(id, { services: body.services })
         .then((response) => {
             res.send({ message: 'Service Update Successfully' })
         })
@@ -62,7 +61,6 @@ router.post('/service', (request, response) => {
 
 router.put('/chat', (request, response) => {
     const { id, chat } = request.body
-    console.log(chat)
     Users.findByIdAndUpdate(id,{chat: chat})
     .then((res) => response.send({message: "Done Hogya"}))
 })
