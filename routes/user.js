@@ -66,6 +66,14 @@ router.put('/chat', (request, response) => {
 })
 
 
+router.put('/request', (req, res) => {
+    const { body } = req;
+    Users.findByIdAndUpdate(body.id, { request: body.request })
+        .then((response) => {
+            res.send({ message: 'Service Update Successfully' })
+        })
+        .catch(e => res.send({ message: e.message }))
+})
 
 
 module.exports = router
