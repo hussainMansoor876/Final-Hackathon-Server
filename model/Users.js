@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema({
     },
     chat: {
         type: Object
+    },
+    request: {
+        type: Object
     }
 })
 
